@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using Xerris.DotNet.Core;
 using Xerris.DotNet.Core.Extensions;
 
 namespace Xerris.WebApi1
@@ -29,6 +30,8 @@ namespace Xerris.WebApi1
             
             services.AddHealthChecks();
 
+            services.AutoRegister(GetType().Assembly);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Xerris.WebApi1", Version = "v1" });
@@ -44,7 +47,8 @@ namespace Xerris.WebApi1
             }
             else
             {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see
+                // https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
                 app.UseExceptionHandler("/Error");
             }
