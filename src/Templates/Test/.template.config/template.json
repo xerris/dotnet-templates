@@ -3,7 +3,8 @@
   "author": "Xerris Inc.",
   "classifications": [
     "Test",
-    "Service"
+    "Service",
+    "xUnit"
   ],
   "name": "Xerris Unit Test Project",
   "groupIdentity": "Xerris.Templates.Test",
