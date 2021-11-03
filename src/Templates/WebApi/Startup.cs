@@ -21,6 +21,9 @@ namespace Xerris.WebApi1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
+            services.AddHealthChecks();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Xerris.WebApi1", Version = "v1" });
@@ -54,6 +57,8 @@ namespace Xerris.WebApi1
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                
+                endpoints.MapHealthChecks("/health");
             });
         }
     }
