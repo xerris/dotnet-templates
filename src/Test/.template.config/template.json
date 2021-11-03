@@ -2,19 +2,18 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "Xerris Inc.",
   "classifications": [
-    "Common",
-    "Web",
+    "Test",
     "Service"
   ],
-  "name": "Xerris Service Project",
-  "groupIdentity": "Xerris.Templates.Service",
-  "identity": "Xerris.Templates.Service.CSharp.5.0",
-  "shortName": "xerris-service",
+  "name": "Xerris Unit Test Project",
+  "groupIdentity": "Xerris.Templates.Test",
+  "identity": "Xerris.Templates.Test.CSharp.5.0",
+  "shortName": "xerris-test",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "Xerris.Service1",
+  "sourceName": "Xerris.Test.Service1",
   "preferNameDirectory": true,
   "postActions": [
     {
@@ -26,7 +25,7 @@
           "text": "Run 'dotnet restore'"
         }
       ],
-      "actionId": "d3371e8c-1b4b-41a5-a0c4-366c2dab3b82",
+      "actionId": "4eae46c1-62c1-4a1b-bef7-de5cc05d1ada",
       "continueOnError": true
     }
   ]
