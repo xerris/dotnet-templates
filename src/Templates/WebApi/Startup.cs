@@ -1,10 +1,15 @@
+using System.Diagnostics;
+using System.Net.Mime;
+using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using Xerris.DotNet.Core.Extensions;
 
 namespace Xerris.WebApi1
 {
@@ -57,8 +62,30 @@ namespace Xerris.WebApi1
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                
+
                 endpoints.MapHealthChecks("/health");
+
+                endpoints.MapGet("/", async context =>
+                {
+                    var assembly = Assembly.GetExecutingAssembly();
+                    var fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+
+                    var assemblyName = assembly.GetName().Name;
+                    var assemblyVersion = assembly.GetName().Version?.ToString();
+                    var fileVersion = fileVersionInfo.FileVersion;
+                    var productVersion = fileVersionInfo.ProductVersion;
+
+                    var versionObject = new
+                    {
+                        assemblyName,
+                        assemblyVersion,
+                        fileVersion,
+                        productVersion
+                    };
+
+                    context.Response.ContentType = MediaTypeNames.Application.Json;
+                    await context.Response.WriteAsync(versionObject.ToJson());
+                });
             });
         }
     }
