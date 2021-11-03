@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Xerris Inc.",
+  "classifications": [
+    "Common",
+    "Web",
+    "Service"
+  ],
+  "name": "Xerris Service Project",
+  "groupIdentity": "Xerris.Templates",
+  "identity": "Xerris.Templates.Service.CSharp.5.0",
+  "shortName": "xerris-service",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "Xerris.Service",
+  "preferNameDirectory": true,
+  "symbols": {
+    "name": {
+      "type": "parameter",
+      "replaces": "Xerris.Service"
+    }
+  },
+  "postActions": [
+    {
+      "id": "restore",
+      "condition": "(!skipRestore)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [
+        {
+          "text": "Run 'dotnet restore'"
+        }
+      ],
+      "actionId": "d3371e8c-1b4b-41a5-a0c4-366c2dab3b82",
+      "continueOnError": true
+    }
+  ]
+}
