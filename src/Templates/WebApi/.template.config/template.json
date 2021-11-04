@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Xerris Inc.",
+  "classifications": ["Common", "Web"],
+  "name": "Xerris Web API Project",
+  "description": "A project template for creating an ASP.NET Core application with an example Controller for a RESTful HTTP service.",
+  "groupIdentity": "Xerris.Templates.WebApi",
+  "identity": "Xerris.Templates.WebApi.CSharp.5.0",
+  "shortName": "xerris-webapi",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "Xerris.WebApi1",
+  "preferNameDirectory": true,
+  "postActions": [
+    {
+      "id": "restore",
+      "condition": "(!skipRestore)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [
+        {
+          "text": "Run 'dotnet restore'"
+        }
+      ],
+      "actionId": "8f9ef778-8d48-441d-a369-2676a222afad",
+      "continueOnError": true
+    }
+  ]
+}
