@@ -13,7 +13,7 @@ namespace Xerris.WebApi1
         /// The name of the item.
         /// </summary>
         [Required]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Whether or not the item is complete

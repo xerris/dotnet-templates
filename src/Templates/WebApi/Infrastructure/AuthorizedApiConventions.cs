@@ -7,7 +7,8 @@ namespace Xerris.WebApi1.Infrastructure
 {
 #pragma warning disable IDE0060 // Remove unused parameter
     /// <summary>
-    ///     <see cref="http://docs.microsoft.com/en-us/aspnet/core/web-api/advanced/conventions" />
+    ///     See Microsoft documentation for more information about ASP.NET Core conventions:
+    ///     <see href="https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/conventions" />
     /// </summary>
     public static class AuthorizedApiConventions
     {
