@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 
-namespace Xerris.WebApi1
+namespace Xerris.WebApi1.Controllers
 {
     [ApiController]
     [ApiExplorerSettings(IgnoreApi = true)]
