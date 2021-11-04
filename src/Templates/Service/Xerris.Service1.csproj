@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xerris.DotNet.Core" Version="0.0.99" />
+    <PackageReference Include="Xerris.DotNet.Core" Version="0.1.0" />
   </ItemGroup>
 
 </Project>
