@@ -1,1 +1,5 @@
-dotnet build .\src\Xerris.DotNet.Templates.csproj --configuration Release
+$solutionFile = ".\Xerris.Templates.sln"
+
+dotnet clean $solutionFile
+
+dotnet build $solutionFile --configuration Release
