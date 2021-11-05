@@ -2,9 +2,7 @@ $solutionFile = ".\Xerris.Templates.sln"
 
 dotnet tool restore
 
-dotnet clean $solutionFile
-
-dotnet gitversion /updateprojectfiles /output=buildserver
+dotnet gitversion /updateprojectfiles /output buildserver
 
 $artifactsDirectory = ".\artifacts"
 

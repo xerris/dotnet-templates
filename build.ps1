@@ -1,5 +1,11 @@
-$solutionFile = ".\Xerris.Templates.sln"
+dotnet tool restore
 
-dotnet clean $solutionFile
+dotnet gitversion
 
-dotnet build $solutionFile --configuration Release
+# We build the projects individually here because only the parent project is in the solution file.
+$projects = Get-ChildItem -Filter "*.csproj" -Recurse;
+
+foreach ($project in $projects) {
+    dotnet clean $project
+    dotnet build $project
+}
