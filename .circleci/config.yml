@@ -20,8 +20,6 @@ jobs:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
 
-    working_directory: /tmp
-
     steps:
       - checkout
       - run:
@@ -32,7 +30,7 @@ jobs:
       #     name: publish
       #     command: dotnet nuget push --api-key="${NUGET_APIKEY}" artifacts/*.nupkg
       - store_artifacts:
-          path: /tmp/artifacts
+          path: ~/project/artifacts
 
 workflows:
   build-publish:

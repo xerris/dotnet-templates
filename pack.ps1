@@ -4,10 +4,10 @@ dotnet tool restore
 
 dotnet gitversion /updateprojectfiles /output buildserver
 
-$artifactsDirectory = ".\artifacts"
+$artifactsDirectory = "artifacts"
 
-Remove-Item  $artifactsDirectory -Force -Recurse -ErrorAction Ignore
+Remove-Item  $artifactsDirectory -Force -Recurse -ErrorAction Ignore -Verbose
 
 dotnet pack $solutionFile `
     --configuration Release `
-    --output ".\artifacts"
+    --output "artifacts"
