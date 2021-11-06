@@ -30,6 +30,12 @@ jobs:
       #     command: dotnet nuget push --api-key="${NUGET_APIKEY}" artifacts/*.nupkg
 
 workflows:
-  build:
+  build-publish:
     jobs:
       - build
+      - publish:
+          requires:
+            - build
+          filters:
+            branches:
+              only: main
