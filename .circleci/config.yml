@@ -4,16 +4,43 @@ jobs:
   build:
     docker:
       - image: microsoft/dotnet:latest
+        # TODO
+        # auth:
+        #   username: mydockerhub-user
+        #   password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
     steps:
       - checkout
       - run:
           name: build
           command: pwsh ./build.ps1
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+  publish:
+    docker:
+      - image: microsoft/dotnet:latest
+      # TODO
+      # auth:
+      #   username: mydockerhub-user
+      #   password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
+    steps:
+      - checkout
+      - run:
+          name: pack
+          command: pwsh ./pack.ps1
+      - run:
+          name: publish
+          command: dotnet nuget push --api-key="${NUGET_APIKEY}" artifacts/*.nupkg
+
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
+  build:
     jobs:
       - build
+
+  build-and-publish:
+    jobs:
+      - build
+      - publish:
+          filters:
+            branches:
+              only: main
+          requires:
+            - build
