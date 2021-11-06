@@ -4,10 +4,9 @@ jobs:
   build:
     docker:
       - image: microsoft/dotnet:latest
-        # TODO
-        # auth:
-        #   username: mydockerhub-user
-        #   password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - run:
@@ -17,10 +16,9 @@ jobs:
   publish:
     docker:
       - image: microsoft/dotnet:latest
-      # TODO
-      # auth:
-      #   username: mydockerhub-user
-      #   password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - run:
@@ -34,13 +32,3 @@ workflows:
   build:
     jobs:
       - build
-
-  build-and-publish:
-    jobs:
-      - build
-      - publish:
-          filters:
-            branches:
-              only: main
-          requires:
-            - build
