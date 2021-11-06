@@ -28,6 +28,8 @@ jobs:
       # - run:
       #     name: publish
       #     command: dotnet nuget push --api-key="${NUGET_APIKEY}" artifacts/*.nupkg
+      - store_artifacts:
+          path: /artifacts
 
 workflows:
   build-publish:
