@@ -24,9 +24,10 @@ jobs:
       - run:
           name: pack
           command: pwsh ./pack.ps1
-      - run:
-          name: publish
-          command: dotnet nuget push --api-key="${NUGET_APIKEY}" artifacts/*.nupkg
+      # TODO: Resolve with #4: https://github.com/xerris/Xerris.DotNet.Templates/issues/4
+      # - run:
+      #     name: publish
+      #     command: dotnet nuget push --api-key="${NUGET_APIKEY}" artifacts/*.nupkg
 
 workflows:
   build:
