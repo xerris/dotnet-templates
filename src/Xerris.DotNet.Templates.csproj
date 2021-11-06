@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>1.0.0</PackageVersion>
     <PackageId>Xerris.DotNet.Templates</PackageId>
     <Title>Xerris Templates</Title>
     <Authors>Xerris Inc.</Authors>
