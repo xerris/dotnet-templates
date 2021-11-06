@@ -5,8 +5,12 @@ dotnet gitversion
 # We build the projects individually here because only the parent project is in the solution file.
 $projects = Get-ChildItem -Filter "*.csproj" -Recurse;
 
+$configuration = "Release";
+
 foreach ($project in $projects) {
-    dotnet clean $project
-    dotnet restore $project
-    dotnet build $project --no-restore
+    Write-Output "Cleaning $project..."
+    dotnet clean $project --configuration $configuration
+
+    Write-Output "Building $project..."
+    dotnet build $project --configuration $configuration
 }
