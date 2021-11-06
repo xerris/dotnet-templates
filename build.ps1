@@ -7,5 +7,6 @@ $projects = Get-ChildItem -Filter "*.csproj" -Recurse;
 
 foreach ($project in $projects) {
     dotnet clean $project
-    dotnet build $project
+    dotnet restore $project
+    dotnet build $project --no-restore
 }
