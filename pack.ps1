@@ -6,11 +6,11 @@ dotnet gitversion /updateprojectfiles /output buildserver
 # See https://github.com/xerris/Xerris.DotNet.Templates/issues/5
 git checkout .\src\Templates\**\*.csproj -v
 
-$solutionFile = ".\Xerris.Templates.sln"
+$packageProject = ".\src\Xerris.DotNet.Templates.csproj"
 $artifactsDirectory = "artifacts"
 
 Remove-Item  $artifactsDirectory -Force -Recurse -ErrorAction Ignore -Verbose
 
-dotnet pack $solutionFile `
+dotnet pack $packageProject `
     --configuration Release `
     --output "artifacts"

@@ -23,8 +23,8 @@ namespace Xerris.WebApi1.Controllers
             var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
 
             return Problem(
-                detail: context.Error.StackTrace,
-                title: context.Error.Message);
+                detail: context?.Error.StackTrace,
+                title: context?.Error.Message);
         }
 
         [Route("/error")]
