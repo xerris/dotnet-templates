@@ -1,13 +1,10 @@
-using Xunit;
+namespace Xerris.Test.Service1;
 
-namespace Xerris.Test.Service1
+public class UnitTest1
 {
-    public class UnitTest1
+    [Fact]
+    public void Test1()
     {
-        [Fact]
-        public void Test1()
-        {
 
-        }
     }
 }

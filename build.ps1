@@ -2,15 +2,11 @@ dotnet tool restore
 
 dotnet gitversion
 
-# We build the projects individually here because only the parent project is in the solution file.
-$projects = Get-ChildItem -Filter "*.csproj" -Recurse;
-
+$solutionFile = ".\Xerris.Templates.sln"
 $configuration = "Release";
 
-foreach ($project in $projects) {
-    Write-Output "Cleaning $project..."
-    dotnet clean $project --configuration $configuration
+dotnet clean $solutionFile --configuration $configuration
 
-    Write-Output "Building $project..."
-    dotnet build $project --configuration $configuration
-}
+dotnet restore $solutionFile
+
+dotnet build $solutionFile --configuration $configuration

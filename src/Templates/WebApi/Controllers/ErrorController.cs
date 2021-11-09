@@ -1,33 +1,29 @@
-﻿using System;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
 
-namespace Xerris.WebApi1.Controllers
+namespace Xerris.WebApi1.Controllers;
+
+[ApiController]
+[ApiExplorerSettings(IgnoreApi = true)]
+public class ErrorController : ControllerBase
 {
-    [ApiController]
-    [ApiExplorerSettings(IgnoreApi = true)]
-    public class ErrorController : ControllerBase
+    [Route("/error-local-development")]
+    public IActionResult ErrorLocalDevelopment(
+        [FromServices] IWebHostEnvironment webHostEnvironment)
     {
-        [Route("/error-local-development")]
-        public IActionResult ErrorLocalDevelopment(
-            [FromServices] IWebHostEnvironment webHostEnvironment)
+        if (!webHostEnvironment.IsDevelopment())
         {
-            if (!webHostEnvironment.IsDevelopment())
-            {
-                throw new InvalidOperationException(
-                    "This shouldn't be invoked in non-development environments.");
-            }
-
-            var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
-
-            return Problem(
-                detail: context.Error.StackTrace,
-                title: context.Error.Message);
+            throw new InvalidOperationException(
+                "This shouldn't be invoked in non-development environments.");
         }
 
-        [Route("/error")]
-        public IActionResult Error() => Problem();
+        var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
+
+        return Problem(
+            detail: context?.Error.StackTrace,
+            title: context?.Error.Message);
     }
+
+    [Route("/error")]
+    public IActionResult Error() => Problem();
 }

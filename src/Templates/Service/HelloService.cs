@@ -1,7 +1,6 @@
-namespace Xerris.Service1
+namespace Xerris.Service1;
+
+public class HelloService : IHelloService
 {
-    public class HelloService : IHelloService
-    {
-        public string Hello() => "Hello";
-    }
+    public string Hello() => "Hello";
 }

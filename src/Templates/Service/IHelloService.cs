@@ -1,7 +1,6 @@
-namespace Xerris.Service1
+namespace Xerris.Service1;
+
+public interface IHelloService
 {
-    public interface IHelloService
-    {
-        string Hello();
-    }
+    string Hello();
 }
