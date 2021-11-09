@@ -10,13 +10,6 @@ namespace Xerris.WebApi1;
 
 public class Startup
 {
-    public Startup(IConfiguration configuration)
-    {
-        Configuration = configuration;
-    }
-
-    public IConfiguration Configuration { get; }
-
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
@@ -26,6 +19,7 @@ public class Startup
 
         services.AutoRegister(GetType().Assembly);
 
+        services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "Xerris.WebApi1", Version = "v1" });
