@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
 using Xerris.WebApi1.Infrastructure;
