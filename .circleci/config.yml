@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: mcr.microsoft.com/dotnet/sdk:latest
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -15,7 +15,7 @@ jobs:
 
   publish:
     docker:
-      - image: mcr.microsoft.com/dotnet/sdk:latest
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -23,11 +23,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: pack
-          command: pwsh ./pack.ps1
-      - run:
-          name: publish
-          command: dotnet nuget push --api-key="${NUGET_APIKEY}" artifacts/*.nupkg
+          name: pack-and-publish
+          command: |
+            pwsh ./pack.ps1
+            dotnet nuget push --source "https://api.nuget.org/v3/index.json" --api-key="${NUGET_APIKEY}" ~/project/artifacts/*.nupkg
       - store_artifacts:
           path: ~/project/artifacts
 
@@ -36,6 +35,7 @@ workflows:
     jobs:
       - build
       - publish:
+          context: xerris-core
           requires:
             - build
           filters:
