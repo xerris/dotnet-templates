@@ -1,5 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PackageType>Template</PackageType>
     <PackageId>Xerris.DotNet.Templates</PackageId>
@@ -7,17 +6,17 @@
     <Authors>Xerris Inc.</Authors>
     <Description>Templates to use when creating .NET apps at Xerris.</Description>
     <PackageTags>dotnet-new;templates;xerris</PackageTags>
-
     <TargetFramework>net6.0</TargetFramework>
-
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <ContentTargetFolders>content</ContentTargetFolders>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <FileVersion>0.1.0.0</FileVersion>
+    <InformationalVersion>0.1.0-alpha.60+Branch.main.Sha.94abb308e23839931ba4cd3bc7f444cdcb6f8895</InformationalVersion>
+    <Version>0.1.0-alpha0060</Version>
   </PropertyGroup>
-
   <ItemGroup>
     <Content Include="Templates\**\*" Exclude="Templates\**\bin\**;Templates\**\obj\**" />
     <Compile Remove="**\*" />
   </ItemGroup>
-
 </Project>
