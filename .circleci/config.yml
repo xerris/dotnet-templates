@@ -24,7 +24,11 @@ jobs:
       - checkout
       - run:
           name: pack-and-publish
+          # We have to install .NET 5 here so gitversion works. This will be fixed in an upcoming release of GitVersion.
+          # See https://github.com/xerris/Xerris.DotNet.Templates/issues/11
           command: |
+            curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel 5.0 --runtime dotnet
+            dotnet --info
             pwsh ./pack.ps1
             dotnet nuget push --source "https://api.nuget.org/v3/index.json" --api-key="${NUGET_APIKEY}" ~/project/artifacts/*.nupkg
       - store_artifacts:
