@@ -11,6 +11,9 @@ foreach ($project in $projects) {
     Write-Output "Cleaning $project..."
     dotnet clean $project --configuration $configuration
 
+    Write-Output "Restoring $project..."
+    dotnet restore $project
+
     Write-Output "Building $project..."
-    dotnet build $project --configuration $configuration
+    dotnet build $project --configuration $configuration --no-restore
 }
