@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
