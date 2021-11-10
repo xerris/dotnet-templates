@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Xerris Inc.",
+  "classifications": ["Config"],
+  "name": "Xerris editorconfig File",
+  "description": "An editorconfig file outlining Xerris's preferred C# code style.",
+  "groupIdentity": "Xerris.Templates.EditorConfig",
+  "identity": "Xerris.Templates.EditorConfig.CSharp.6.0",
+  "shortName": "xerris-editorconfig",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  }
+}
