@@ -1,14 +1,10 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Xerris Inc.",
-  "classifications": [
-    "Common",
-    "Web",
-    "Service"
-  ],
+  "classifications": ["Common", "Web", "Service"],
   "name": "Xerris Service Project",
   "groupIdentity": "Xerris.Templates.Service",
-  "identity": "Xerris.Templates.Service.CSharp.5.0",
+  "identity": "Xerris.Templates.Service.CSharp.6.0",
   "shortName": "xerris-service",
   "tags": {
     "language": "C#",
