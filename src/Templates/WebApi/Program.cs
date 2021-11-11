@@ -23,25 +23,25 @@ var builder = Host.CreateDefaultBuilder(args)
          webBuilder.UseStartup<Startup>();
      });
 
- Log.Logger = new LoggerConfiguration()
-     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-     .Enrich.FromLogContext()
-     .WriteTo.Console()
-     .CreateLogger();
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .CreateLogger();
 
- try
- {
-     Log.Information(xerrisLogo);
-     Log.Information("Starting web host");
-     builder.Build().Run();
-     return 0;
- }
- catch (Exception ex)
- {
-     Log.Fatal(ex, "Host terminated unexpectedly");
-     return 1;
- }
- finally
- {
-     Log.CloseAndFlush();
- }
+try
+{
+    Log.Information(xerrisLogo);
+    Log.Information("Starting web host");
+    builder.Build().Run();
+    return 0;
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Host terminated unexpectedly");
+    return 1;
+}
+finally
+{
+    Log.CloseAndFlush();
+}
