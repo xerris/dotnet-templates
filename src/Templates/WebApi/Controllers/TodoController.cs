@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
 using Xerris.WebApi1.Infrastructure;
