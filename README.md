@@ -20,6 +20,9 @@ template. For example, to create a new service project, run this command:
 dotnet new xerris-service --name Company.Project.ServiceName
 ```
 
+Templates can be checked for updates with `dotnet new --update-check` and
+updated with `dotnet new --update-apply`.
+
 ## Adding New Templates
 
 Any new templates added under the `src/Templates` folder will be included in the
