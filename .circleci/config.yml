@@ -12,10 +12,6 @@ jobs:
       - run:
           name: build
           command: pwsh ./build.ps1
-          # This environment variable works around GitVersion requiring the .NET 5 runtime to be installed. See #11.
-          # https://github.com/GitTools/GitVersion/issues/2906#issuecomment-964629657
-          environment:
-            DOTNET_ROLL_FORWARD: Major
 
   publish:
     docker:
@@ -31,10 +27,6 @@ jobs:
           command: |
             pwsh ./pack.ps1
             dotnet nuget push --source "https://api.nuget.org/v3/index.json" --api-key="${NUGET_APIKEY}" ~/project/artifacts/*.nupkg
-          # This environment variable works around GitVersion requiring the .NET 5 runtime to be installed. See #11.
-          # https://github.com/GitTools/GitVersion/issues/2906#issuecomment-964629657
-          environment:
-            DOTNET_ROLL_FORWARD: Major
       - store_artifacts:
           path: ~/project/artifacts
 
