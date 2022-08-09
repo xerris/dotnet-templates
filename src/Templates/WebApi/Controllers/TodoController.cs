@@ -19,7 +19,7 @@ public class TodoController : ControllerBase
     };
 
     /// <summary>
-    ///     Create a new todo item. />.
+    ///     Create a new todo item.
     /// </summary>
     /// <param name="props">The properties to create the item with.</param>
     [HttpPost]
