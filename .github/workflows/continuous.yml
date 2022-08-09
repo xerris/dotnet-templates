@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
@@ -30,11 +32,16 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: default
+      url: https://www.nuget.org/packages/Xerris.DotNet.Templates
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Publish
         shell: pwsh
+        env:
+          NUGET_APIKEY: ${{ secrets.NUGET_APIKEY }}
         run: |
           ./pack.ps1
-          dotnet nuget push --source "https://api.nuget.org/v3/index.json" --api-key="${{ env.NODE_VERSION }}" ~/artifacts/*.nupkg
+          dotnet nuget push ./artifacts/*.nupkg --source "https://api.nuget.org/v3/index.json" --api-key "$env:NUGET_APIKEY"
