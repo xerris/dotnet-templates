@@ -1,0 +1,33 @@
+name: continuous
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Restore and build
+        run: pwsh ./build.ps1
+
+  publish:
+    needs: build
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment:
+      name: default
+    steps:
+      - name: Publish
+        run: |
+          pwsh ./pack.ps1
+          dotnet nuget push --source "https://api.nuget.org/v3/index.json" --api-key="${{ env.NODE_VERSION }}" ~/artifacts/*.nupkg
