@@ -16,12 +16,17 @@ zWOggggEmEi=SLeeeeeL$+           >NRDDDDP/   oDDD&ezzzzzzzzzzz) iDDDR-      SDDD
 ";
 // ReSharper restore StringLiteralTypo
 
-var builder = Host.CreateDefaultBuilder(args)
-    .UseSerilog()
-     .ConfigureWebHostDefaults(webBuilder =>
-     {
-         webBuilder.UseStartup<Startup>();
-     });
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((_, logger) => logger.WriteTo.Console());
+
+var startup = new Startup();
+
+startup.ConfigureServices(builder.Services);
+
+var app = builder.Build();
+
+startup.Configure(app);
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
@@ -33,7 +38,9 @@ try
 {
     Log.Information(xerrisLogo);
     Log.Information("Starting web host");
-    builder.Build().Run();
+
+    await app.RunAsync();
+
     return 0;
 }
 catch (Exception ex)
