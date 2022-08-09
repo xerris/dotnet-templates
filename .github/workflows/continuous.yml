@@ -36,5 +36,5 @@ jobs:
       - name: Publish
         shell: pwsh
         run: |
-          pack.ps1
+          ./pack.ps1
           dotnet nuget push --source "https://api.nuget.org/v3/index.json" --api-key="${{ env.NODE_VERSION }}" ~/artifacts/*.nupkg
