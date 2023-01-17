@@ -41,7 +41,7 @@ jobs:
       - name: Publish
         shell: pwsh
         env:
-          NUGET_APIKEY: ${{ secrets.NUGET_APIKEY }}
+          NUGET_APIKEY: ${{ secrets.NUGET_APIKEY_PUSH }}
         run: |
           ./pack.ps1
-          dotnet nuget push ./artifacts/*.nupkg --source "https://api.nuget.org/v3/index.json" --api-key "$env:NUGET_APIKEY"
+          dotnet nuget push ./artifacts/*.nupkg --source "https://api.nuget.org/v3/index.json" --api-key "$env:NUGET_APIKEY_PUSH"
