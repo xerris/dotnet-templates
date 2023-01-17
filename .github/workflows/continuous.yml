@@ -49,4 +49,4 @@ jobs:
           NUGET_APIKEY: ${{ secrets.NUGET_APIKEY_PUSH }}
         run: |
           ./pack.ps1
-          dotnet nuget push ./artifacts/*.nupkg --source "https://api.nuget.org/v3/index.json" --api-key "$env:NUGET_APIKEY_PUSH"
+          dotnet nuget push ./artifacts/*.nupkg --source "https://api.nuget.org/v3/index.json" --api-key "$env:NUGET_APIKEY"
