@@ -4,13 +4,13 @@
   "classifications": ["Test", "Service", "xUnit"],
   "name": "Xerris Unit Test Project",
   "groupIdentity": "Xerris.Templates.Test",
-  "identity": "Xerris.Templates.Test.CSharp.6.0",
+  "identity": "Xerris.Templates.Test.CSharp.7.0",
   "shortName": "xerris-test",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "Xerris.Test.Service1",
+  "sourceName": "Xerris.Service1.Tests",
   "preferNameDirectory": true,
   "postActions": [
     {

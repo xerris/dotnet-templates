@@ -1,4 +1,4 @@
-namespace Xerris.Test.Service1;
+namespace Xerris.Service1.Tests;
 
 public class UnitTest1
 {

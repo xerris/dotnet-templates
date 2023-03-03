@@ -5,7 +5,7 @@
   "name": "Xerris Web API Project",
   "description": "A project template for creating an ASP.NET Core application with an example Controller for a RESTful HTTP service.",
   "groupIdentity": "Xerris.Templates.WebApi",
-  "identity": "Xerris.Templates.WebApi.CSharp.6.0",
+  "identity": "Xerris.Templates.WebApi.CSharp.7.0",
   "shortName": "xerris-webapi",
   "tags": {
     "language": "C#",
