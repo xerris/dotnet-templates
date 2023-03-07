@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup Label="Build">
     <PackageType>Template</PackageType>
     <TargetFramework>net7.0</TargetFramework>
@@ -8,7 +7,6 @@
     <ContentTargetFolders>content</ContentTargetFolders>
     <NoDefaultExcludes>true</NoDefaultExcludes>
   </PropertyGroup>
-
   <PropertyGroup Label="Package">
     <PackageId>Xerris.DotNet.Templates</PackageId>
     <Title>Xerris Templates</Title>
@@ -23,7 +21,6 @@
     <PackageId>Xerris.DotNet.Templates</PackageId>
     <PackageTags>dotnet-new;templates;xerris</PackageTags>
   </PropertyGroup>
-
   <ItemGroup Label="Files">
     <Content Include="**\*" Exclude="**\bin\**\*;**\obj\**\*;**\.vs\**\*" />
     <Compile Remove="**\*" />

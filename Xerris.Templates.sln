@@ -1,25 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xerris.DotNet.Templates", "src\Xerris.DotNet.Templates.csproj", "{4D68D2C3-5022-472D-B915-6DFD2F964CCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xerris.DotNet.Templates", "src\Xerris.DotNet.Templates.csproj", "{4D68D2C3-5022-472D-B915-6DFD2F964CCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xerris.Service1", "src\Templates\Service\Xerris.Service1.csproj", "{4C5CB002-C156-4E25-9B3C-DDE891FD7C28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xerris.Service1", "src\Templates\Service\Xerris.Service1.csproj", "{4C5CB002-C156-4E25-9B3C-DDE891FD7C28}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{3C38CB4D-7B4C-4D12-96FB-43F92D31C9E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xerris.Test.Service1", "src\Templates\Test\Xerris.Test.Service1.csproj", "{4CFF6F63-EC95-4D56-8048-7018E5D3B83B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xerris.Service1.Tests", "src\Templates\Test\Xerris.Service1.Tests.csproj", "{4CFF6F63-EC95-4D56-8048-7018E5D3B83B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xerris.WebApi1", "src\Templates\WebApi\Xerris.WebApi1.csproj", "{C1E14E00-EDFD-417B-AF38-C36E86955536}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xerris.WebApi1", "src\Templates\WebApi\Xerris.WebApi1.csproj", "{C1E14E00-EDFD-417B-AF38-C36E86955536}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{4D68D2C3-5022-472D-B915-6DFD2F964CCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -38,6 +35,9 @@ Global
 		{C1E14E00-EDFD-417B-AF38-C36E86955536}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1E14E00-EDFD-417B-AF38-C36E86955536}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1E14E00-EDFD-417B-AF38-C36E86955536}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4C5CB002-C156-4E25-9B3C-DDE891FD7C28} = {3C38CB4D-7B4C-4D12-96FB-43F92D31C9E3}

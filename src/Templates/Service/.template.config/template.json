@@ -4,7 +4,7 @@
   "classifications": ["Common", "Web", "Service"],
   "name": "Xerris Service Project",
   "groupIdentity": "Xerris.Templates.Service",
-  "identity": "Xerris.Templates.Service.CSharp.6.0",
+  "identity": "Xerris.Templates.Service.CSharp.7.0",
   "shortName": "xerris-service",
   "tags": {
     "language": "C#",
