@@ -1,3 +1,6 @@
+# Rebuilds template package, packs new templates, uninstalls previous versions, then installs them from the nupkg files
+# directly. This is useful for testing modifications to templates.
+
 dotnet clean --configuration release
 dotnet clean --configuration debug
 
