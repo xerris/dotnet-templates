@@ -1,26 +1,34 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup Label="Build">
     <PackageType>Template</PackageType>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <ContentTargetFolders>content</ContentTargetFolders>
     <NoDefaultExcludes>true</NoDefaultExcludes>
   </PropertyGroup>
+
   <PropertyGroup Label="Package">
-    <PackageId>Xerris.DotNet.Templates</PackageId>
+    <PackageId>Xerris.Templates</PackageId>
     <Title>Xerris Templates</Title>
     <Authors>Xerris Inc.</Authors>
     <Description>Templates to use when creating .NET apps at Xerris.</Description>
-    <Copyright>Copyright © Xerris Inc. All rights reserved.</Copyright>
+    <Copyright>Copyright $([System.DateTime]::Now.Year) Xerris Inc.</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/xerris/Xerris.DotNet.Templates</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/xerris/Xerris.DotNet.Templates.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/xerris/dotnet-templates</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/xerris/dotnet-templates.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageId>Xerris.DotNet.Templates</PackageId>
     <PackageTags>dotnet-new;templates;xerris</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
+
+  <ItemGroup Condition="">
+    <None Include="..\..\icon.png" Pack="true" PackagePath="" Visible="false" />
+  </ItemGroup>
+
   <ItemGroup Label="Files">
     <Content Include="**\*" Exclude="**\bin\**\*;**\obj\**\*;**\.vs\**\*" />
     <Compile Remove="**\*" />
