@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xerris.Templates", "src\Tem
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{3AAD2B92-3439-4880-A8DA-CDC957E006DD}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{6C09564E-62D3-4F94-BEC0-55E6A053FE78}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4D87D861-35C0-46BB-A41C-8749427A10E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,8 @@ Global
 		{9F6044CC-4F2B-43A6-A3A8-1D036BD26710}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F6044CC-4F2B-43A6-A3A8-1D036BD26710}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F6044CC-4F2B-43A6-A3A8-1D036BD26710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C09564E-62D3-4F94-BEC0-55E6A053FE78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C09564E-62D3-4F94-BEC0-55E6A053FE78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -40,6 +46,7 @@ Global
 		{C1E14E00-EDFD-417B-AF38-C36E86955536} = {3AAD2B92-3439-4880-A8DA-CDC957E006DD}
 		{9F6044CC-4F2B-43A6-A3A8-1D036BD26710} = {3C38CB4D-7B4C-4D12-96FB-43F92D31C9E3}
 		{3AAD2B92-3439-4880-A8DA-CDC957E006DD} = {3C38CB4D-7B4C-4D12-96FB-43F92D31C9E3}
+		{6C09564E-62D3-4F94-BEC0-55E6A053FE78} = {4D87D861-35C0-46BB-A41C-8749427A10E2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A5EEDC75-A228-43ED-87D8-E8FB06848027}
