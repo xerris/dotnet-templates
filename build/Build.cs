@@ -13,7 +13,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 // ReSharper disable RedundantExtendsListEntry
 // ReSharper disable InconsistentNaming
 
-class Build : NukeBuild,
+partial class Build : NukeBuild,
     IHasGitRepository,
     IHasVersioning,
     IRestore,
