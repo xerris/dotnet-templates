@@ -6,14 +6,14 @@
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <ContentTargetFolders>content</ContentTargetFolders>
-    <NoDefaultExcludes>true</NoDefaultExcludes>
+    <NoWarn>CS1591;NU5129;NU5118</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Label="Package">
     <PackageId>Xerris.Templates</PackageId>
     <Title>Xerris Templates</Title>
     <Authors>Xerris Inc.</Authors>
-    <Description>Templates to use when creating .NET apps at Xerris.</Description>
+    <Description>Templates to use when creating .NET apps at Xerris</Description>
     <Copyright>Copyright $([System.DateTime]::Now.Year) Xerris Inc.</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -26,11 +26,11 @@
   </PropertyGroup>
 
   <ItemGroup Condition="">
-    <None Include="..\..\icon.png" Pack="true" PackagePath="" Visible="false" />
+    <None Include="..\icon.png" Pack="true" PackagePath="" Visible="false" />
   </ItemGroup>
 
-  <ItemGroup Label="Files">
-    <Content Include="**\*" Exclude="**\bin\**\*;**\obj\**\*;**\.vs\**\*" />
+  <ItemGroup>
+    <Content Include="Templates\**\*" Exclude="Templates\**\bin\**;Templates\**\obj\**" />
     <Compile Remove="**\*" />
   </ItemGroup>
 </Project>

@@ -64,6 +64,11 @@ class Build : NukeBuild,
             FromComponent<IHasGitRepository>().GitRepository.Tags.Any())
         .WhenSkipped(DependencyBehavior.Execute);
 
+
+    Configure<DotNetPackSettings> IPack.PackSettings => _ => _
+        // Only pack the parent templates project
+        .SetProject(Solution.GetProject("Xerris.Templates"));
+
     T FromComponent<T>()
         where T : INukeBuild
         => (T) (object) this;

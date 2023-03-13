@@ -1,4 +1,4 @@
-# Xerris.DotNet.Templates
+# dotnet-templates
 
 Project templates for use with `dotnet new`.
 
@@ -7,7 +7,7 @@ Project templates for use with `dotnet new`.
 Templates can be installed as a nuget package with the command:
 
 ```powershell
-dotnet new --install Xerris.DotNet.Templates
+dotnet new --install Xerris.Templates
 ```
 
 Read more about `dotnet new` and project templates
@@ -17,7 +17,7 @@ Once installed, the templates can be used just like any other `dotnet new`
 template. For example, to create a new service project, run this command:
 
 ```powershell
-dotnet new xerris-service --name Company.Project.ServiceName
+dotnet new xerris-webapi --name Company.Project.Api
 ```
 
 Templates can be checked for updates with `dotnet new --update-check` and
@@ -25,25 +25,25 @@ updated with `dotnet new --update-apply`.
 
 ## Adding New Templates
 
-Any new templates added under the `src/Templates` folder will be included in the
-`Xerris.DotNet.Templates` package automatically. For more information on
-creating custom templates, see the [official docs](https://docs.microsoft.com/en-us/dotnet/core/tools/custom-templates).
+New templates added under the `src/Templates` folder will be included in the
+`Xerris.Templates` package automatically. For more information on creating
+custom templates, see the [official docs](https://docs.microsoft.com/en-us/dotnet/core/tools/custom-templates).
 
 ### Solution File
 
 The requirements for [template packages](https://docs.microsoft.com/en-us/dotnet/core/tutorials/cli-templates-create-template-package)
 make the solution file in this repo a bit weird. The template package project,
-`Xerris.DotNet.Templates` doesn't include any children in compilation, otherwise
-all dependencies of templates in the package would have to be included in that
-project. `Xerris.DotNet.Templates` only exists as a target for packaging.
+`Xerris.Templates` doesn't include any children in compilation, otherwise all
+dependencies of templates in the package would have to be included in that
+project. `Xerris.Templates` only exists as a target for packaging.
 
 To facilitate development and building of these packages in an IDE, the solution
 file contains both the package project, and direct references to the template
 projects inside the directory structure. The directory structure is the primary
 way of structuring the template packages, but template **projects** can be
-added to the solution file as needed. Projects under `Xerris.DotNet.Templates`
-are **not built** unless included in the solution directly.
+added to the solution file as needed. Projects under `Xerris..Templates` are
+**not built** unless included in the solution directly.
 
 In short, if you open the solution in an IDE, you will see template projects in
-two places. Once as an item in the `Xerris.DotNet.Templates` project, and once
-as a direct inclusion in the solution. This is intended.
+two places. Once as an item in the `Xerris.Templates` project, and once as a
+direct inclusion in the solution. This is intended.
