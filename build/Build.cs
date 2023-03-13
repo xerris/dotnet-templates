@@ -6,6 +6,7 @@ using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Xerris.Nuke.Components;
+using static Nuke.Common.ControlFlow;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
@@ -32,6 +33,7 @@ class Build : NukeBuild,
     [Solution]
     readonly Solution Solution;
     Solution IHasSolution.Solution => Solution;
+
     Target Clean => _ => _
         .Before<IRestore>()
         .Executes(() =>
@@ -66,8 +68,19 @@ class Build : NukeBuild,
 
 
     Configure<DotNetPackSettings> IPack.PackSettings => _ => _
-        // Only pack the parent templates project
         .SetProject(Solution.GetProject("Xerris.Templates"));
+
+    Target Install => _ => _
+        .DependsOn<IPack>()
+        .Executes(() =>
+        {
+            var packageName = Solution.GetProject("Xerris.Templates")!.Name;
+            var packageSource = FromComponent<IHasArtifacts>().ArtifactsDirectory;
+            var version = FromComponent<IHasVersioning>().Versioning.NuGetVersionV2;
+
+            SuppressErrors(() => DotNet($"new uninstall {packageName}"));
+            DotNet($"new install {packageName} --add-source {packageSource} --version {version}");
+        });
 
     T FromComponent<T>()
         where T : INukeBuild

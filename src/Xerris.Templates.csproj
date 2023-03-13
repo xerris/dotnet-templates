@@ -6,7 +6,8 @@
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <ContentTargetFolders>content</ContentTargetFolders>
-    <NoWarn>CS1591;NU5129;NU5118</NoWarn>
+    <NoDefaultExcludes>true</NoDefaultExcludes>
+    <NoWarn>NU5128</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Label="Package">
@@ -29,7 +30,7 @@
     <None Include="..\icon.png" Pack="true" PackagePath="" Visible="false" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Label="Files">
     <Content Include="Templates\**\*" Exclude="Templates\**\bin\**;Templates\**\obj\**" />
     <Compile Remove="**\*" />
   </ItemGroup>
