@@ -1,15 +1,13 @@
 using System.ComponentModel;
-using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
 using Xerris.WebApi1.Infrastructure;
+using Xerris.WebApi1.Models;
 
 namespace Xerris.WebApi1.Controllers;
 
 [ApiController]
 [Route("todos")]
-[Produces(MediaTypeNames.Application.Json)]
-[Consumes(MediaTypeNames.Application.Json)]
-public class TodoController : ControllerBase
+public class TodosController : ControllerBase
 {
     private static readonly IEnumerable<TodoItem> TodoItems = new[]
     {

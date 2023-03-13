@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Xerris.WebApi1;
+namespace Xerris.WebApi1.Models;
 
 public class TodoItem : TodoItemProperties
 {
