@@ -14,19 +14,15 @@
     <PackageId>Xerris.Templates</PackageId>
     <Title>Xerris Templates</Title>
     <Authors>Xerris Inc.</Authors>
-    <Description>Templates to use when creating .NET apps at Xerris</Description>
+    <Description>Templates to use when creating .NET projects</Description>
     <Copyright>Copyright $([System.DateTime]::Now.Year) Xerris Inc.</Copyright>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/xerris/dotnet-templates</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/xerris/dotnet-templates.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageTags>dotnet-new;templates;xerris</PackageTags>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PackageTags>dotnet-new;templates</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
-  <ItemGroup Condition="">
+  <ItemGroup>
     <None Include="..\icon.png" Pack="true" PackagePath="" Visible="false" />
   </ItemGroup>
 
