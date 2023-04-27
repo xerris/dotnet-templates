@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Xerris Inc.",
+  "classifications": ["Config"],
+  "name": "Xerris GitVersion configuration file",
+  "description": "An GitVersion config file for release flow development",
+  "groupIdentity": "Xerris.Templates.GitVersion",
+  "identity": "Xerris.Templates.GitVersion.6.0",
+  "shortName": "xerris-gitversion",
+  "tags": {
+    "type": "item"
+  }
+}
