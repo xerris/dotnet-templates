@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Nuke.Common;
-using Nuke.Common.Git;
+using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Xerris.Nuke.Components;
 using static Nuke.Common.ControlFlow;
-using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 // ReSharper disable RedundantExtendsListEntry
@@ -16,6 +15,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 partial class Build : NukeBuild,
     IHasGitRepository,
     IHasVersioning,
+    IClean,
     IRestore,
     IFormat,
     ICompile,
@@ -34,23 +34,12 @@ partial class Build : NukeBuild,
     readonly Solution Solution;
     Solution IHasSolution.Solution => Solution;
 
-    Target Clean => _ => _
-        .Before<IRestore>()
-        .Executes(() =>
-        {
-            DotNetClean(_ => _
-                .SetProject(Solution));
-
-            EnsureCleanDirectory(FromComponent<IHasArtifacts>().ArtifactsDirectory);
-        });
-
     public IEnumerable<string> ExcludedFormatPaths => Enumerable.Empty<string>();
 
     public bool RunFormatAnalyzers => true;
 
     Target ICompile.Compile => _ => _
         .Inherit<ICompile>()
-        .DependsOn(Clean)
         .DependsOn<IFormat>(x => x.VerifyFormat);
 
     Configure<DotNetPublishSettings> ICompile.PublishSettings => _ => _
@@ -59,13 +48,9 @@ partial class Build : NukeBuild,
 
     Target IPush.Push => _ => _
         .Inherit<IPush>()
-        .Consumes(FromComponent<IPush>().Pack)
-        .Requires(() =>
-            FromComponent<IHasGitRepository>().GitRepository.IsOnMainBranch() ||
-            FromComponent<IHasGitRepository>().GitRepository.IsOnReleaseBranch() ||
-            FromComponent<IHasGitRepository>().GitRepository.Tags.Any())
+        .Consumes(this.FromComponent<IPush>().Pack)
+        .Requires(() => this.FromComponent<IHasGitRepository>().GitRepository.Tags.Any())
         .WhenSkipped(DependencyBehavior.Execute);
-
 
     Configure<DotNetPackSettings> IPack.PackSettings => _ => _
         .SetProject(Solution.GetProject("Xerris.Templates"));
@@ -75,14 +60,10 @@ partial class Build : NukeBuild,
         .Executes(() =>
         {
             var packageName = Solution.GetProject("Xerris.Templates")!.Name;
-            var packageSource = FromComponent<IHasArtifacts>().ArtifactsDirectory;
-            var version = FromComponent<IHasVersioning>().Versioning.NuGetVersionV2;
+            var version = this.FromComponent<IHasVersioning>().Versioning.NuGetVersionV2;
+            var packagePath = this.FromComponent<IPack>().PackagesDirectory / $"{packageName}.{version}.nupkg";
 
             SuppressErrors(() => DotNet($"new uninstall {packageName}"));
-            DotNet($"new install {packageName} --add-source {packageSource} --version {version}");
+            DotNet($"new install {packagePath}");
         });
-
-    T FromComponent<T>()
-        where T : INukeBuild
-        => (T) (object) this;
 }
