@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Xerris Inc.",
+  "classifications": ["Config"],
+  "name": "Xerris .gitattributes file",
+  "description": "An .gitattributes file for use in .NET repositories",
+  "groupIdentity": "Xerris.Templates.GitAttributes",
+  "identity": "Xerris.Templates.GitAttributes.CSharp.6.0",
+  "shortName": "xerris-gitattributes",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  }
+}
