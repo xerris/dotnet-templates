@@ -40,8 +40,8 @@ jobs:
             .nuke/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('global.json', 'src/**/*.csproj') }}
-      - name: Run './build.cmd Pack'
-        run: ./build.cmd Pack
+      - name: Run './build.cmd Install'
+        run: ./build.cmd Install
       - uses: actions/upload-artifact@v3
         with:
           name: packages
@@ -60,8 +60,8 @@ jobs:
             .nuke/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('global.json', 'src/**/*.csproj') }}
-      - name: Run './build.cmd Pack'
-        run: ./build.cmd Pack
+      - name: Run './build.cmd Install'
+        run: ./build.cmd Install
       - uses: actions/upload-artifact@v3
         with:
           name: packages
@@ -80,8 +80,8 @@ jobs:
             .nuke/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('global.json', 'src/**/*.csproj') }}
-      - name: Run './build.cmd Pack'
-        run: ./build.cmd Pack
+      - name: Run './build.cmd Install'
+        run: ./build.cmd Install
       - uses: actions/upload-artifact@v3
         with:
           name: packages
