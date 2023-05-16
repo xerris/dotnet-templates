@@ -45,14 +45,14 @@ partial class Build : NukeBuild,
         .When(!ScheduledTargets.Contains(((IPush) this).Push), _ => _
             .ClearProperties());
 
+    Configure<DotNetPackSettings> IPack.PackSettings => _ => _
+        .SetProject(Solution.GetAllProjects("Xerris.Templates").Single());
+
     Target IPush.Push => _ => _
         .Inherit<IPush>()
-        .Consumes(this.FromComponent<IPush>().Pack)
+        .Consumes(this.FromComponent<IPack>().Pack)
         .Requires(() => this.FromComponent<IHasGitRepository>().GitRepository.Tags.Any())
         .WhenSkipped(DependencyBehavior.Execute);
-
-    Configure<DotNetPackSettings> IPack.PackSettings => _ => _
-        .SetProject(Solution.GetProject("Xerris.Templates"));
 
     Target Install => _ => _
         .DependsOn<IPack>()
