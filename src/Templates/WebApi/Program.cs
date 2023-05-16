@@ -24,7 +24,6 @@ builder.Services
     .AddFluentValidationAutoValidation(fv => fv.DisableDataAnnotationsValidation = true)
     .AddValidatorsFromAssemblyContaining<Program>();
 
-// todo: can I the title from the template name?
 var openApiDocumentSettings = new OpenApiDocumentSettings("Todo API");
 
 builder.Services.AddCustomOpenApiDocument(openApiDocumentSettings);
