@@ -7,7 +7,7 @@ Project templates for use with `dotnet new`.
 Templates can be installed as a nuget package with the command:
 
 ```powershell
-dotnet new install Xerris.Templates
+dotnet new --install Xerris.Templates
 ```
 
 Read more about `dotnet new` and project templates
@@ -20,7 +20,7 @@ template. For example, to create a new service project, run this command:
 dotnet new xerris-webapi --name Company.Project.Api
 ```
 
-Templates can be updated with `dotnet new update`.
+Templates can be updated with `dotnet new --update-apply`.
 
 ## Adding New Templates
 

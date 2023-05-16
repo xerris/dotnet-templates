@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Nuke.Common;
+using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
@@ -45,8 +46,10 @@ partial class Build : NukeBuild,
         .When(!ScheduledTargets.Contains(((IPush) this).Push), _ => _
             .ClearProperties());
 
+    Project TemplatesProject => Solution.GetAllProjects("Xerris.Templates").Single();
+
     Configure<DotNetPackSettings> IPack.PackSettings => _ => _
-        .SetProject(Solution.GetAllProjects("Xerris.Templates").Single());
+        .SetProject(TemplatesProject);
 
     Target IPush.Push => _ => _
         .Inherit<IPush>()
@@ -55,14 +58,15 @@ partial class Build : NukeBuild,
         .WhenSkipped(DependencyBehavior.Execute);
 
     Target Install => _ => _
+        .Description("Tests template package installation by building and re-installing the package locally.")
         .DependsOn<IPack>()
         .Executes(() =>
         {
-            var packageName = Solution.GetProject("Xerris.Templates")!.Name;
+            var packageName = TemplatesProject.Name;
             var version = this.FromComponent<IHasVersioning>().Versioning.NuGetVersionV2;
             var packagePath = this.FromComponent<IPack>().PackagesDirectory / $"{packageName}.{version}.nupkg";
 
-            SuppressErrors(() => DotNet($"new uninstall {packageName}"));
-            DotNet($"new install {packagePath}");
+            SuppressErrors(() => DotNet($"new --uninstall {packageName}"));
+            DotNet($"new --install {packagePath}");
         });
 }
