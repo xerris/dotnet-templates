@@ -5,7 +5,7 @@
   "name": "Xerris .gitattributes file",
   "description": "An .gitattributes file for use in .NET repositories",
   "groupIdentity": "Xerris.Templates.GitAttributes",
-  "identity": "Xerris.Templates.GitAttributes.CSharp.6.0",
+  "identity": "Xerris.Templates.GitAttributes.CSharp.8.0",
   "shortName": "xerris-gitattributes",
   "tags": {
     "language": "C#",
