@@ -7,11 +7,13 @@ public static class ProgramExtensions
     public static IServiceCollection AddCustomOpenApiDocument(this IServiceCollection services,
         OpenApiDocumentSettings settings)
     {
+        services.AddEndpointsApiExplorer();
+
         services.AddOpenApiDocument(document =>
         {
             document.Title = settings.Title;
-            document.FlattenInheritanceHierarchy = true;
-            document.AllowReferencesWithProperties = true;
+            document.SchemaSettings.FlattenInheritanceHierarchy = true;
+            document.SchemaSettings.AllowReferencesWithProperties = true;
         });
 
         return services;
@@ -21,7 +23,7 @@ public static class ProgramExtensions
         OpenApiDocumentSettings settings)
     {
         app.UseOpenApi();
-        app.UseSwaggerUi3(config =>
+        app.UseSwaggerUi(config =>
         {
             config.DocumentTitle = settings.Title;
         });

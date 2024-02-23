@@ -34,30 +34,30 @@ partial class Build : NukeBuild,
     readonly Solution Solution;
     Solution IHasSolution.Solution => Solution;
 
-    public IEnumerable<string> ExcludedFormatPaths => Enumerable.Empty<string>();
+    public IEnumerable<AbsolutePath> ExcludedFormatPaths => Enumerable.Empty<AbsolutePath>();
 
-    public bool RunFormatAnalyzers => true;
+    public bool RunFormatAnalyzers => IsServerBuild;
 
-    Target ICompile.Compile => _ => _
+    Target ICompile.Compile => d => d
         .Inherit<ICompile>()
         .DependsOn<IFormat>(x => x.VerifyFormat);
 
-    Configure<DotNetPublishSettings> ICompile.PublishSettings => _ => _
-        .When(!ScheduledTargets.Contains(((IPush) this).Push), _ => _
+    Configure<DotNetPublishSettings> ICompile.PublishSettings => s => s
+        .When(!ScheduledTargets.Contains(((IPush) this).Push), x => x
             .ClearProperties());
 
     Project TemplatesProject => Solution.GetAllProjects("Xerris.Templates").Single();
 
-    Configure<DotNetPackSettings> IPack.PackSettings => _ => _
+    Configure<DotNetPackSettings> IPack.PackSettings => s => s
         .SetProject(TemplatesProject);
 
-    Target IPush.Push => _ => _
+    Target IPush.Push => t => t
         .Inherit<IPush>()
         .Consumes(this.FromComponent<IPack>().Pack)
         .Requires(() => this.FromComponent<IHasGitRepository>().GitRepository.Tags.Any())
         .WhenSkipped(DependencyBehavior.Execute);
 
-    Target Install => _ => _
+    Target Install => t => t
         .Description("Tests template package installation by building and re-installing the package locally.")
         .DependsOn<IPack>()
         .Executes(() =>
