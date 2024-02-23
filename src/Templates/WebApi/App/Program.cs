@@ -18,6 +18,8 @@ builder.Services.AddRouting(opts =>
     opts.LowercaseQueryStrings = true;
 });
 
+builder.Services.AddHttpLogging(_ => { });
+
 builder.Services.AddHealthChecks();
 
 builder.Services
@@ -46,8 +48,20 @@ app.UseHttpsRedirection();
 
 app.UseHttpLogging();
 
+app.UseRouting();
+app.MapControllers();
+
 app.MapHealthChecks("/");
 
 app.AddSwaggerUi(openApiDocumentSettings);
 
 await app.RunAsync();
+
+namespace Xerris.WebApi1
+{
+    // ReSharper disable once PartialTypeWithSinglePart
+    // This allows this class to be used in as an entry point for integration tests.
+    // See: https://docs.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-8.0#basic-tests-with-the-default-webapplicationfactory
+    public partial class Program;
+}
+
